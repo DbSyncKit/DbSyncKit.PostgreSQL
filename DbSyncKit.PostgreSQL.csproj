@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DbSyncKit.DB\DbSyncKit.DB.csproj" />
+    <ProjectReference Include="..\DbSyncKit.Templates.PostgreSQL\DbSyncKit.Templates.PostgreSQL.csproj" />
     <ProjectReference Include="..\DbSyncKit.Templates\DbSyncKit.Templates.csproj" />
   </ItemGroup>
 
