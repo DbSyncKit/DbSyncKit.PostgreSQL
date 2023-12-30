@@ -34,11 +34,11 @@
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="8.0.1" />
   </ItemGroup>
-
+	
   <ItemGroup>
-    <ProjectReference Include="..\DbSyncKit.DB\DbSyncKit.DB.csproj" />
-    <ProjectReference Include="..\DbSyncKit.Templates.PostgreSQL\DbSyncKit.Templates.PostgreSQL.csproj" />
-    <ProjectReference Include="..\DbSyncKit.Templates\DbSyncKit.Templates.csproj" />
+    <ProjectReference Include="..\..\DbSyncKit.DB\src\DbSyncKit.DB.csproj" />
+    <ProjectReference Include="..\..\DbSyncKit.Templates.PostgreSQL\src\DbSyncKit.Templates.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\DbSyncKit.Templates\src\DbSyncKit.Templates.csproj" />
   </ItemGroup>
 
 </Project>
