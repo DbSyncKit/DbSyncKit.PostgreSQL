@@ -187,8 +187,7 @@ namespace DbSyncKit.PostgreSQL
         public List<string> GetCondition<T>(T entity, List<string> keyColumns) where T : IDataContractComparer
         {
             Type entityType = typeof(T);
-            PropertyInfo[] keyProperties = entityType.GetProperties().
-                Where(p => keyColumns.Contains(p.Name)).ToArray();
+            PropertyInfo[] keyProperties = GetKeyProperties<T>();
 
             return keyProperties.Select(p => $"{EscapeColumn(p.Name)} = '{EscapeValue(p.GetValue(entity))}'").ToList();
         }
@@ -213,9 +212,10 @@ namespace DbSyncKit.PostgreSQL
         /// <returns>The escaped column name enclosed in double quotes.</returns>
         public string EscapeColumn(string? input)
         {
-            if(input.Contains(" "))
+            if(input is string && input.Contains(" "))
                 return $"\"{input}\"";
-            return input;
+
+            return input.ToString();
         }
 
         /// <summary>
