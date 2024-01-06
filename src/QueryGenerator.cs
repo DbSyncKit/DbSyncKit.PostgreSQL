@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace DbSyncKit.PostgreSQL
 {
+    /// <summary>
+    /// Helps generate SQL queries for PostgreSQL database operations.
+    /// </summary>
     public class QueryGenerator: QueryHelper, IQueryGenerator
     {
         #region Properties
