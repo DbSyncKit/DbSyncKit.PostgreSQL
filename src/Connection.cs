@@ -5,6 +5,13 @@ using System.Data;
 
 namespace DbSyncKit.PostgreSQL
 {
+    /// <summary>
+    /// Represents a connection to a database, implementing the <see cref="IDatabase"/> interface.
+    /// </summary>
+    /// <remarks>
+    /// This class provides a generic representation of a database connection and includes methods
+    /// defined in the <see cref="IDatabase"/> interface for executing queries and managing transactions.
+    /// </remarks>
     public class Connection : IDatabase
     {
         #region Declaration
@@ -51,7 +58,7 @@ namespace DbSyncKit.PostgreSQL
         /// <returns>A string representing the PostgreSQL connection string.</returns>
         public string GetConnectionString()
         {
-            NpgsqlConnectionStringBuilder builder = new NpgsqlConnectionStringBuilder
+            NpgsqlConnectionStringBuilder builder = new()
             {
                 Host = Host,
                 Port = Port,
@@ -74,12 +81,12 @@ namespace DbSyncKit.PostgreSQL
         {
             try
             {
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(GetConnectionString()))
+                using (NpgsqlConnection npgSqlConnection = new(GetConnectionString()))
                 {
                     npgSqlConnection.Open();
 
-                    using (NpgsqlDataAdapter npgSqlDataAdapter = new NpgsqlDataAdapter(query, npgSqlConnection))
-                    using (DataSet dataset = new DataSet())
+                    using (NpgsqlDataAdapter npgSqlDataAdapter = new(query, npgSqlConnection))
+                    using (DataSet dataset = new())
                     {
                         npgSqlDataAdapter.Fill(dataset, tableName);
                         return dataset;
@@ -101,7 +108,7 @@ namespace DbSyncKit.PostgreSQL
         {
             try
             {
-                using (NpgsqlConnection npgSqlConnection = new NpgsqlConnection(GetConnectionString()))
+                using (NpgsqlConnection npgSqlConnection = new(GetConnectionString()))
                 {
                     npgSqlConnection.Open();
                     npgSqlConnection.Close();
